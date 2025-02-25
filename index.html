@@ -7,13 +7,14 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/tiny-slider.css">
 </head>
 
 <body>
 
     <!-- navbar start -->
 
-    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar" role="navigation">
         <div class="container">
             <a href="index.html" class="navbar-brand me-5">
                 <img src="images/baret-logo-1.jpg" class="logo" alt="baret-logo" height="130">
@@ -26,41 +27,591 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav navbar-center me-auto mt-lg-0 mt-2">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-center mx-1 text-black" href="#home">Начало</a>
+                        <a class="nav-link btn btn-primary text-center mx-1 text-black my-1" href="#home">Начало</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-center mx-1 text-black" href="#structure">Структура</a>
+                        <a class="nav-link btn btn-primary text-center mx-1 text-black my-1"
+                            href="#structure">Структура</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-center mx-1 text-black" href="#activity">Дейности</a>
+                        <a class="nav-link btn btn-primary text-center mx-1 text-black my-1"
+                            href="#activity">Дейности</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-center mx-1 text-black" href="#seminars">Семинари</a>
+                        <a class="nav-link btn btn-primary text-center mx-1 text-black my-1"
+                            href="#projects">Проекти</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-center mx-1 text-black" href="#training">Обучение</a>
+                        <a class="nav-link btn btn-primary text-center mx-1 text-black my-1"
+                            href="#seminars">Семинари</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-center mx-1 text-black" href="#publications">Издания</a>
+                        <a class="nav-link btn btn-primary text-center mx-1 text-black my-1"
+                            href="#training">Обучение</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-center mx-1 text-black" href="#articles">Статии</a>
+                        <a class="nav-link btn btn-primary text-center mx-1 text-black my-1"
+                            href="#publications">Издания</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-info text-center mx-1 text-black" href="#contact-us">Контакти</a>
+                        <a class="nav-link btn btn-primary text-center mx-1 text-black my-1" href="#articles">Статии</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-info text-center mx-1 text-black my-1" href="#contact-us"
+                            data-bs-toggle="modal" data-bs-target="#contactModal">Контакти</a>
                     </li>
                 </ul>
-               
+
             </div>
         </div>
     </nav>
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Запитване</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form name="myForm" onsubmit="return form()">
+                        <span id="error-msg"></span>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="fw-medium form-label">Име</label>
+                                        <input type="text" class="form-control" placeholder="Вашето име" id="name">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="fw-medium form-label">Имейл</label>
+                                        <input type="email" class="form-control" placeholder="Вашият имейл" id="email">
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="company" class="fw-medium form-label">Компания(не е
+                                            задължително)</label>
+                                        <input type="text" class="form-control" placeholder="Вашата компания"
+                                            id="company">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="subject" class="fw-medium form-label">Тема</label>
+                                        <input type="text" class="form-control" placeholder="Тема" id="subject">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="number" class="fw-medium form-label">Вашият Номер</label>
+                                        <input type="text" class="form-control" placeholder="Your number" id="number">
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="comments" class="fw-medium form-label">Коментар</label>
+                                        <textarea class="form-control" id="comments" rows="5"
+                                            placeholder="Вашият коментар"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <input type="submit" id="submit" name="send" class="btn btn-primary mt-2"
+                                            value="Изпрати">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
+    </div>
 
     <!-- navbar end -->
+    <!-- start home  -->
+    <section style="padding-top: 150px;" id="home">
+        <div class="container justify-content-center align-items-center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="text-center mb-5">Българска асоциация за селски и еко туризъм (БАСЕТ)</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 d-flex justify-content-center">
+
+                    <img class="m-1 rounded mb-2" src="images/mainimage.png" alt="baret-bg-info">
+
+                </div>
+                <div class="col-lg-6 d-flex justify-content-center">
+                    <div class="rounded p-2 mb-2">
+                        <p class="fs-1"><b><strong>Б</strong></b> иоразнообразие</p>
+
+                        <p class="fs-1"><b><strong>А</strong></b> втентичност</p>
+
+                        <p class="fs-1"><b><strong>С</strong></b> покойствие</p>
+
+                        <p class="fs-1"><b><strong>Е</strong></b> тнография</p>
+
+                        <p class="fs-1"><b><strong>Т</strong></b> радиция</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="border rounded p-2 mb-2">Нашите цели и задачи</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 mb-2">
+                    <p>&#x2705; Имаме за цел да развиваме селския и екологичния туризъм в неурбанизираните райони на
+                        България на основата на цялостното подобряване на състоянието им като подпомагаме възраждането
+                        им; в смисъла на определението за екотуризъм, работим за съхраняването на културно-историческото
+                        наследство и благополучието на местните хора.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 mb-2">
+                    <p>&#x2705; Разработваме програми с национален обхват за развитието на туризма на места,
+                        перспективни за селски и екологичен туризъм.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 mb-2">
+                    <p>&#x2705; Насърчаваме екологосъобразната стопанска и екологозащитната дейност и екологичното
+                        образование.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 mb-2">
+                    <p>&#x2705; Мобилизираме научен потенциал, който разработва идейни проекти за екологичен туризъм.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <p class="text-center"></p>
+        </div>
+    </section>
+    <!-- край начало -->
+
+    <!-- старт структура -->
+    <section id="structure" style="padding-top: 100px;" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-info text-justify mt-5">Учредяване и структура</h2>
+            <p class="text-start mt-lg-4"><strong>Българската асоциация за селски и екологичен туризъм</strong> е
+                учредена
+                на 14 февруари 1995 г. в гр. Бяла черква, Великотърновска област и регистрирана през м. юни същата
+                година. Освен членове частни лица, асоциацията има и колективни членове - общини, селищни кметства,
+                администрации на природни паркове, неправителствени организации, фирми.</p>
+        </div>
+        <div class="container">
+            <p class="mt-2"><strong>Органи на управление на БАСЕТ:</strong></p>
+            <p class="ms-5 mt-2">&#x2705;<strong>Общо събрание</strong> - върховен орган на управление</p>
+            <p class="ms-5 mt-2">&#x2705;<strong>Управителен съвет</strong> - избира се от Общото събрание</p>
+            <p class="ms-5 mt-2">&#x2705;<strong>Контролен съвет</strong> - избира се от Общото събрание</p>
+            <p class="ms-5 mt-2">&#x2705;<strong>Председател на Управителния съвет</strong> на БАСЕТ (избира се от УС) -
+                Ст.н.с. д-р Петър Петров</p>
+        </div>
+        <div class="container border rounded mt-3">
+            <p class="p-2">Член на БАСЕТ може да бъде всяко физическо или юридическо лице, което е готово да съдейства
+                за
+                изпълнението на основните цели, приема устава и плаща редовно членски внос.</p>
+        </div>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                    <div class="rounded">
+                        <img src="images/PPetrov.jpg" alt="Petur Petrov">
+                    </div>
+                </div>
+                <div class="col-6 d-flex justify-content-center align-items-center">
+
+                    <p class="rounded">Ст.н.с. д-р Петър Петров - завеждащ секция "Физическа география" в
+                        Географския институт към Българската академия на науките и Председател на УС на БАСЕТ.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne">
+                            Участие на БАСЕТ с представители и консултанти към:
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <p> &#x2714; Държавната агенцията по туризъм - в работни групи по изготвяне на закони,
+                                стратегии
+                                и наредби в
+                                туризма <br>
+                                &#x2714; Министерството на земеделието и храните <br>
+                                &#x2714; Министерството на околната среда и водите <br>
+                                &#x2714; Националния съвет по туризъм (на ротационен принцип) <br>
+                                &#x2714; Комисията за защита на потребителите <br>
+                                &#x2714; Националната агенция за професионално образование и обучение <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseTwo">
+                            БАСЕТ е член на:
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <p> &#x2714; Съюза за стопанска инициатива <br>
+                                &#x2714; Българската туристическа камара - колективно членство <br>
+                                &#x2714; Българската асоциация на туристическите агенции (БАТА) - асоциирано членство
+                                <br>
+                                &#x2714; Националния съвет по обучение в туризма <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseThree">
+                            БАСЕТ работи в партньорство с:
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <p>
+                                &#x2714; Българска хотелиерска и ресторантьорска асоциация (БХРА)<br>
+                                &#x2714; Асоциация на планинските водачи<br>
+                                &#x2714; Асоциация на екскурзоводите в България<br>
+                                &#x2714; Национална балнеотуристическа федерация<br>
+                                &#x2714; Географски институт при БАН<br>
+                                &#x2714; Природен парк "Врачански Балкан"<br>
+                                &#x2714; Природен парк "Сините камъни"<br>
+                                &#x2714; Природен парк "Русенски Лом"<br>
+                                &#x2714; Катедра "Туризъм" към Геолого-географския факултет – Софийски университет "Св.
+                                Кл.
+                                Охридски"<br>
+                                &#x2714; Клуб за спорт и туризъм "Мачирски"<br>
+                                &#x2714; Център за гражданско развитие "Протекта", Ниш, Сърбия<br>
+                                &#x2714; Сдружение "Био-Б-Еко", община Борино, Смолянска област<br>
+                                &#x2714; Регионална туристическа асоциация "Стара планина"<br>
+                                &#x2714; Съвети по туризъм: Павликени, Стара Загора, Луковит, Трън, Кюстендил, Чипровци,
+                                Панагюрище,<br>
+                                &#x2714; Баните, Велико Търново, Елена, Копривщица и др.<br>
+                                &#x2714; Общини и кметства – над 40 и др.<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- край структира -->
+    <!-- начало дейности -->
+
+    <section id="activity" style="padding-top: 100px;">
+        <div class="container">
+            <h2 class="text-start text-info mt-1">Дейност</h2>
+            <p class="mt-3">Нашата дейност е тясно свързана с развитието на нетрадиционни форми на туризъм и не напразно
+                Асоциацията
+                носи това име <strong>- екологичният и селският туризъм</strong> взаимно се допълват. Наличието на
+                интересен природен
+                обект за посещение в селски район може само да увеличи привлекателността му за туризъм. Този факт е
+                залегнал в основата на Националната програма на БАСЕТ "Български пътеки".</p>
+            <p class="mt-3">В тази дейност работим в тясно сътрудничество с местните администрации, с администрациите на
+                природните паркове и други защитени обекти, туристически фирми, неправителствени организации, държавни
+                ведомства.</p>
+            <p class="mt-3">За изпълнението на целите на асоциацията, ние разработваме <a href="#projects">проекти</a>,
+                провеждаме <a href="">семинари</a>,
+                научни конференции и <a href="#training">обучения</a>, публикуваме многобройни рекламни <a
+                    href="#publications">издания</a> и научни <a href="#articles">статии</a>.</p>
+
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12 mt-3 d-flex justify-content-center align-items-center">
+                    <div class="rounded">
+                        <img class="rounded" src="./images/mostche_devinksa_river.jpg" alt="ecko-path">
+                    </div>
+                </div>
+                <div class="col-12 mt-3  d-flex justify-content-center align-items-center">
+                    <p class="rounded">Екопътеките са едни от най-популярните и посещавани обекти за краткотраен
+                        туризъм.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <div class="border rounded">
+                <p class="p-2">По-важни събития за 2007-2008 г.</p>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <p class="m-2">&#x2714; БАСЕТ разработи предложения за създаването на общински и междуобщински туристически
+                продукти -
+                райони и зони за туризъм, на базата на неизползвани природни ресурси. Проведоха се няколко срещи с
+                общински администрации, на които бяха обсъдени начините на действие.</p>
+
+            <p class="m-2">&#x2714; БАСЕТ е партньор на организации от Гърция, Италия, Холандия, Финландия, Румъния по
+                програмата
+                "Леонардо да Винчи", в проект ЕCO - DESTINET за унифициране на критериите за стандартизация в
+                екотуризма.</p>
+
+            <p class="m-2">&#x2714; Разработен е идеен проект за туристическа зона "Висок", Сърбия и са проведени две
+                конференции, в
+                Пирот и в София, за представянето на основната идея - модел за съживяване на изостанали неурбанизирани
+                територии.</p>
+
+            <p class="m-2">&#x2714; Разработен е идеен проект за "Среднопланински ландшафтен парк "Южна Плана", за
+                създаване на нова
+                туристическа зона в община Самоков.</p>
+
+            <p class="m-2">&#x2714; По покана на НПО "Природа на заем", БАСЕТ участва в проектирането и строежа на
+                Канинската
+                екопътека в Западните Родопи и в изпълнението на най-интересните обекти по трасето.</p>
+
+            <p class="m-2">&#x2714; Семейството на екопътеките се попълни с още една - Загражденската екопътека в община
+                Баните.</p>
+
+            <p class="m-2">&#x2714; Експерти на БАСЕТ:</p>
+
+            <p class="m-2">- разработиха Стратегия за развитието на нетрадиционен туризъм в община Трекляно,
+                Кюстендилска област за
+                периода 2007-2013 г.;<br>
+                - направиха научните разработки по проект за трансгранично сътрудничество между България и Румъния: База
+                данни за състоянието на природната среда и Стратегия за рационалното използване на природните ресурси в
+                община Ценово – България и община Комана – Румъния;<br>
+                - изработиха едромащабни карти на туристическия потенциал на туризма в общините Луковит, Ценово,
+                Русе;<br>
+                - проведоха семинари по селски и екологичен туризъм, както и по развитието на нетрадиционен туризъм в
+                общините Невестино, Белоградчик, Чипровци, Добрич.</p>
+
+        </div>
+    </section>
+    <!-- край дейности -->
+
+    <!-- начало проекти -->
+
+    <section id="projects" style="padding-top: 100px;" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-start text-info mt-5 pt-3">Изпълнени проекти</h2>
+            <div class="border rounded ">
+                <p class="p-2">2013 - 2014</p>
+            </div>
+            <p class="p-2">&#x2714; Проект <strong>„Стара планина – вдъхновяваща селския и междукултурен
+                    туризъм“</strong>
+                Проектът е съфинансиран от Европейския съюз чрез Програмата за трансгранично сътрудничество по ИПП
+                България–Сърбия. <br>
+                „Стара планина – вдъхновение за селски и междукултурен туризъм“ е името на проекта, по който от м. април
+                2013 г. работи БАСЕТ. Това е проект, финансиран по програмата за трансгранично сътрудничество по
+                Инструмента за предприсъединителна помощ България – Сърбия, в който БАСЕТ си партнира с Центъра за
+                развитие на гражданското общество ПРОТЕКТА в Ниш и община Свърлиг от Сърбия и българската Фондация за
+                нова култура. Целта на проекта е да се поощрят съвместните дейности и трансграничните връзки в
+                пограничния район на Стара планина в областта на устойчивия туризъм, съчетан с опазването на природата и
+                популяризиране на местните храни, обичаи, изкуства и занаяти. Проектните дейности включват проучване и
+                „картографиране“ на човешките и природни ресурси в северозападната част на Стара планина – на сръбска и
+                българска територия. Фондацията за нова култура ще организира две артистични „работилници“ за ученици и
+                младежи, включително от ромската общност. В тях ще бъдат създадени малки художествени постановки, които
+                след това ще бъдат представени по време на местни фестивали. БАСЕТ ще проведе поредица от обучения в
+                сръбския град Свърлиг за представители на публичната администрация и представители на туристическия
+                бранш. В програмата на обученията ще бъдат застъпени такива теми като политики и планиране в туризма,
+                използване на европейско финансиране за реализацията на проекти, маркетинг и реклама на обектите за
+                селски туризъм, развитие на местните туристически продукти чрез местните обичаи в региона, културното
+                наследство и природните ресурси и др. Сръбските партньори от община Свърлиг съвместно със свои колеги от
+                община Вършец ще участват в посещение за обмяна на опит и добри практики на територията на област
+                Монтана. БАСЕТ ще бъде домакин на заключителната конференция по проекта в град Вършец. <br>
+                Проектът ще продължи до края на м. април 2014 г.</p>
+            <div class="border rounded ">
+                <p class="p-2">2007 - 2009</p>
+            </div>
+            <p class="p-2">&#x2714; Проект ЕCO-DESTINET (LLP-LDV/TOI/2007/IT/309) по програмата "Леонардо да Винчи".
+                БАСЕТ е партньор на организации от Гърция, Италия, Холандия, Финландия, Румъния.</p>
+            <div class="border rounded ">
+                <p class="p-2">2007 - 2008</p>
+            </div>
+            <p class="p-2">&#x2714; Идеен проект на БАСЕТ за <strong>туристическа зона "Висок", Сърбия,</strong> към
+                Програмата за трансгранично сътрудничество между България и Сърбия "През Ниш до Своге за туризъм между
+                приятели – добри съседи" (BG 2004/016-785010101014) на Сдружение Балканска коалиция, Белоградчик,
+                България и организация Протекта, Сърбия.</p>
+            <div class="border rounded ">
+                <p class="p-2">2007</p>
+            </div>
+            <p class="p-2">&#x2714; Среднопланински ландшафтен парк "Южна Плана"- идеен проект за туристическа зона в
+                община Самоков.</p>
+            <p class="p-2">&#x2714; Участие на БАСЕТ в проектирането и строежа на Канинска екопътека в Западните Родопи,
+                към проекта на община Гърмен и НПО "Природа на заем", за трансгранично сътрудничество между България и
+                Македония.</p>
+            <p class="p-2">&#x2714; Строителство на Загражденската екопътека, проектирана през 2005 г. Възложител:
+                община Баните.</p>
+        </div>
+
+    </section>
+
+    <!-- край проекти -->
+
+    <!-- старт семинари -->
+
+    <section id="seminars" style="padding-top: 100px;">
+        <div class="container">
+            <h2 class="text-start text-info mt-5">Научно-практическа дейност</h2>
+            <p class="mt-2">Организатори сме, съорганизатори и участници в научно-практически конференции, работни срещи
+                и форуми на
+                международно и национално ниво по въпросите на селския и екологичния туризъм.</p>
+
+            <p class="mt-2">Партньори сме в международни проекти по програма "Леонардо да Винчи" за обучение на домакини
+                на къщи за
+                гости и сертифициране в екотуризма. Разработили сме практически наръчници за селски туризъм и за водачи
+                в
+                природна среда.</p>
+
+            <p class="mt-2">Провели сме многобройни специализирани семинари по селски и екологичен туризъм, в това число
+                модули по
+                екологично обучение и семинари за обучение на водачи в природна среда.</p>
+            <div class="border rounded mt-2">
+                <p class="p-2 ">Семинари. Конференции и работни срещи. По-важни теми:</p>
+            </div class="mt-2">
+            <p>&#x26AB; Втора балканска научно-практическа конференция на тема "Природният потенциал, устойчивото
+                развитие
+                на българските планински общини и бъдещето им в обединена Европа". <span class="text-primary">29-30 юни 2007 година - с. Баните,
+                община
+                Баните, област Смолян.</span></p>
+            <p>&#x26AB; Научно-практически семинар с международно участие "Регионална туристическа зона "Висок" – модел
+                за
+                съживяване на изостанали неурбанизирани територии". <span class="text-primary">24 април 2008 - София.</span></p>
+            <p>&#x26AB; Регионална конференция с международно участие "Регионална туристическа зона "Висок" – модел за
+                съживяване на изостанали неурбанизирани територии". <span class="text-primary">9 февруари 2008 – Пирот, Сърбия.</span></p>
+            <p>&#x26AB; "Развитие на селските райони и екотуризма". <span class="text-primary">2 и 14 февруари 2006 – София.</span></p>
+            <p> &#x26AB; Туристически информационен форум "Нови възможности за реконструкция и инфраструктурни проекти в
+                българската туристическа индустрия". <span class="text-primary">8 ноември 2004 – Банско.</span></p>
+            <p>&#x26AB; Балканска научно-практическа конференция "Природният потенциал и устойчивото развитие на
+                планинските
+                райони". <span class="text-primary">13-15 юли 2001 – Враца.</span></p>
+            <p> &#x26AB; "Природният потенциал и устойчивото развитие на планинските райони". <span class="text-primary">2000 – София.</span></p>
+
+            <p>&#x26AB; Втора регионална работна среща "Структуриране на регионален проект за подкрепа на развитието на
+                туризма в Източните Родопи". <span class="text-primary">23 март 2001 – Момчилград, Кърджалийска област.</span></p>
+            <p>&#x26AB; Първа регионална работна среща "Структуриране на регионален проект за подкрепа на развитието на
+                туризма в Източните Родопи". <span class="text-primary">19-20 януари 2001 - Момчилград.</span></p>
+            <p>&#x26AB; "Природният потенциал, устойчивото развитие на българските планински общини и бъдещето им в
+                обединена Европа". <span class="text-primary">2001 – София.</span></p>
+            <p>&#x26AB; Научна конференция с международно участие "Североизтока на Балканите". <span class="text-primary">2000 – Тулча, Румъния.</span></p>
+            <p>&#x26AB; Регионална конференция с международно участие "Балкански трансгранични туристически продукти".
+                <span class="text-primary">2000
+                – Пирот, Сърбия.</span></p>
+            <p>&#x26AB; Международна научно-приложна конференция "Устойчиво развитие на селските региони в условията на
+                преход". <span class="text-primary">20-21 юни 2000 – Велики Преслав.</span></p>
+            <p> &#x26AB; Национална конференция "Туризмът и възраждането на българските села". <span class="text-primary">11 юли 1998 – Бяла черква,
+                Великотърновска област.</span></p>
+            <p>&#x26AB; Семинар "Устойчив туризъм и регионално развитие на Родопите". <span class="text-primary">28 ноември 1998 – с. Бачково,
+                Пловдивска област.</span></p>
+            <p>&#x26AB; Практически семинар "Екотуризъм и околна среда". <span class="text-primary">30 октомври – 1 ноември 1997 – с. Крушуна,
+                Ловешка
+                област.</span></p>
+            <p>&#x26AB; Национална среща "Селският и екологичният туризъм, местните администрации и селищното и
+                регионално
+                развитие". <span class="text-primary">14-15 март 1996 – Априлци, Ловешка област.</span></p>
+            <p>&#x26AB; Национална среща-дискусия в Народното събрание. "Селският и екологичният туризъм – перспектива за
+                България". <span class="text-primary">14 ноември 1995 – София.</span></p>
+            <p> &#x26AB; Национална среща–дискусия в Географския институт към БАН. "Българското село и туризма".<span class="text-primary"> 17
+                октомври
+                1995 – София.</span></p>
+            <p>&#x26AB; Национална конференция "Проблеми на регионалното развитие на България". <span class="text-primary">9-10 септември 1995 –
+                Несебър.</span></p>
+        </div>
+
+    </section>
+
+    <!-- край семинари -->
+
+    <section class="section" id="weather-forcast" class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-12 mb-4">
+                    <h4 class="fw-semibold mb-3">Прогноза за времето</h4>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-12 mt-4 pt-2">
+                    <div class="weather-slider">
+                        <p id="carousel-weather">
+
+                            <!-- <div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="client-review">
+                                                <div class="name position-relative">
+                                                    <img src="images/quotation.png" alt="quotation" class="img-fluid">
+                                                    <h5 class="mt-4">John Smith</h5>
+                                                    <p class="text-muted"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6 mt-5 pt-5">
+                                                <div class="cli-text text-center text-muted">
+                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo,
+                                                        ullam.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="client-review">
+                                                <div class="name position-relative">
+                                                    <img src="images/quotation.png" alt="quotation" class="img-fluid">
+                                                    <h5 class="mt-4">John Smith</h5>
+                                                    <p class="text-muted"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6 mt-5 pt-5">
+                                                <div class="cli-text text-center text-muted">
+                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo,
+                                                        ullam.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="client-review">
+                                                <div class="name position-relative">
+                                                    <img src="images/quotation.png" alt="quotation" class="img-fluid">
+                                                    <h5 class="mt-4">John Smith</h5>
+                                                    <p class="text-muted"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6 mt-5 pt-5">
+                                                <div class="cli-text text-center text-muted">
+                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo,
+                                                        ullam.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./js/slider.js"></script>
 </body>
 
 </html>
